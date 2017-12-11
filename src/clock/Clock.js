@@ -109,14 +109,15 @@ class Clock extends Component {
   }
 
   ringAlarm(alarm){
-    Vibration.vibrate(2000);
+    if(this.props.settings.vibration)
+      Vibration.vibrate(2000);
     Alert.alert(
       'Alarm',
       'Your ' + alarm.hours + ':' + alarm.minutes + ' is ringing',
       [
         //{text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
         //{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-        {text: 'OK', onPress: () => console.log('OK Pressed')}
+        {text: 'OK', onPress: () => console.log('Alarm cancelled')}
       ],
       { cancelable: false }
     )
