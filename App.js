@@ -1,31 +1,26 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import Clock from './src/clock/Clock.js';
+import { TabNavigator } from 'react-navigation';
+import HomeScreen from './src/Home.js'
+import SettingsScreen from './src/Settings.js'
 
-export default class App extends React.Component {
-
-  constructor(props){
-    super(props);
+const RootNavigator = TabNavigator({
+  Home: {
+    screen: HomeScreen
+  },
+  Settings: {
+    screen: SettingsScreen
   }
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <View style={{flex:0.5, width: '90%', alignItems: 'center'}}>
-          <Clock/>
-        </View>
-      </View>
-    );
-  }
-}
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#666',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center'
+},{
+  tabBarPosition: 'top',
+  animationEnabled: true,
+  tabBarOptions: {
+    activeTintColor: '#fff',
+    inactiveTintColor: '#fff',
+    showIcon: true,
+    showLabel: false,
+    style: {
+      backgroundColor: '#C2185B'
+    }
   }
 });
+
+export default RootNavigator;
