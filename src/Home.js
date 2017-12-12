@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, View, Image } from 'react-native';
-import { StackNavigator } from 'react-navigation';
 import Clock from './clock/Clock.js';
 
 class HomeScreen extends React.Component {

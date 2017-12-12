@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ClockFrame from './ClockFrame';
 import CustomButton from './CustomButton';
-import { StyleSheet, Text, View, Alert, Vibration, Image, FlatList } from 'react-native';
+import { StyleSheet, Text, View, Alert, Vibration, Image } from 'react-native';
 
 const TIME_MODE = 'T';
 const ALARM_MODE = 'A';
@@ -104,13 +104,14 @@ class Clock extends Component {
          this.setState({
            alarm: alarm
          });
-         this.ringAlarm(alarm);
+         this.fireAlarm(alarm);
     }
   }
 
-  ringAlarm(alarm){
-    if(this.props.settings.vibration)
+  fireAlarm(alarm){
+    if(this.props.settings.vibration){
       Vibration.vibrate(2000);
+    }
     Alert.alert(
       'Alarm',
       'Your ' + alarm.hours + ':' + alarm.minutes + ' is ringing',

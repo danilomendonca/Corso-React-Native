@@ -1,7 +1,8 @@
 import React from 'react';
 import { TabNavigator } from 'react-navigation';
-import HomeScreen from './src/Home.js'
-import SettingsScreen from './src/Settings.js'
+import HomeScreen from './src/Home.js';
+import SettingsScreen from './src/Settings.js';
+import CountriesScreen from './src/Countries.js';
 
 const RootNavigator = TabNavigator({
   Home: {
@@ -9,6 +10,9 @@ const RootNavigator = TabNavigator({
   },
   Settings: {
     screen: SettingsScreen
+  },
+  Countries: {
+    screen: CountriesScreen
   }
 },{
   tabBarPosition: 'top',
@@ -29,9 +33,9 @@ export default class App extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      music: 'Fire Siren',
+      music: 'fire_siren.mp3',
       musicLevel: 3,
-      vibration: true
+      vibration: true,
     };
     this.handleMusicChange = this.handleMusicChange.bind(this);
     this.handleMusicLevelChange = this.handleMusicLevelChange.bind(this);
@@ -57,7 +61,7 @@ export default class App extends React.Component{
           settings: this.state,
           handleMusicChange: this.handleMusicChange,
           handleMusicLevelChange: this.handleMusicLevelChange,
-          handleVibrationChange: this.handleVibrationChange
+          handleVibrationChange: this.handleVibrationChange,
         }}
       />
     );

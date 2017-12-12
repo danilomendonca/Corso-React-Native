@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image, Picker, Slider, CheckBox, Settings } from 'react-native';
+import { StyleSheet, View, Text, Image, Picker, Slider, CheckBox } from 'react-native';
 
 class SettingsScreen extends React.Component{
 
