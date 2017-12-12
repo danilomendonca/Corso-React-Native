@@ -13,11 +13,15 @@ class HomeScreen extends React.Component {
     ),
   };
 
+  constructor(props){
+    super(props);
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <View style={{flex:1, width: '90%', justifyContent: 'center', alignItems: 'center'}}>
-          <Clock settings={this.props.screenProps.settings}/>
+          <Clock/>
         </View>
       </View>
     );

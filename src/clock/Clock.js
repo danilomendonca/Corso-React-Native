@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { StyleSheet, Text, View, Image, Vibration, Alert } from 'react-native';
 import ClockFrame from './ClockFrame';
 import CustomButton from './CustomButton';
-import { StyleSheet, Text, View, Alert, Vibration, Image } from 'react-native';
+import AlarmSound from './AlarmSound.js';
+
 
 const TIME_MODE = 'T';
 const ALARM_MODE = 'A';
@@ -22,6 +24,7 @@ class Clock extends Component {
       this.handleAlarmClick = this.handleAlarmClick.bind(this);
       this.handleHoursClick = this.handleHoursClick.bind(this);
       this.handleMinutesClick = this.handleMinutesClick.bind(this);
+      this.cancelAlarm = this.cancelAlarm.bind(this);
   }
 
   componentDidMount(){
@@ -29,6 +32,7 @@ class Clock extends Component {
       () => this.handleTick(),
       1000
     );
+    this.alarmSound = new AlarmSound();
   }
 
   componentWillUnmount(){
@@ -98,7 +102,6 @@ class Clock extends Component {
     if(this.state.alarm.set &&
        this.state.date.getHours() === this.state.alarm.hours &&
        this.state.date.getMinutes() === this.state.alarm.minutes){
-
          var alarm = this.state.alarm;
          alarm.set = false;
          this.setState({
@@ -109,19 +112,24 @@ class Clock extends Component {
   }
 
   fireAlarm(alarm){
-    if(this.props.settings.vibration){
+    if(global.settings.vibration){
       Vibration.vibrate(2000);
     }
+    this.alarmSound.play({uri: global.settings.music, level: global.settings.musicLevel});
     Alert.alert(
       'Alarm',
       'Your ' + alarm.hours + ':' + alarm.minutes + ' is ringing',
       [
         //{text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
         //{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-        {text: 'OK', onPress: () => console.log('Alarm cancelled')}
+        {text: 'OK', onPress: this.cancelAlarm}
       ],
       { cancelable: false }
     )
+  }
+
+  cancelAlarm(){
+    this.alarmSound.stop();
   }
 
   render(){

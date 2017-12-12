@@ -28,44 +28,13 @@ const RootNavigator = TabNavigator({
   }
 });
 
-export default class App extends React.Component{
-
-  constructor(props){
-    super(props);
-    this.state = {
-      music: 'fire_siren.mp3',
-      musicLevel: 3,
-      vibration: true,
-    };
-    this.handleMusicChange = this.handleMusicChange.bind(this);
-    this.handleMusicLevelChange = this.handleMusicLevelChange.bind(this);
-    this.handleVibrationChange = this.handleVibrationChange.bind(this);
-  }
-
-  handleMusicChange(value){
-    this.setState({music: value});
-  }
-
-  handleMusicLevelChange(value){
-    this.setState({musicLevel: value});
-  }
-
-  handleVibrationChange(value){
-    this.setState({vibration: value});
-  }
+class App extends React.Component{
 
   render(){
     return (
-      <RootNavigator
-        screenProps={{
-          settings: this.state,
-          handleMusicChange: this.handleMusicChange,
-          handleMusicLevelChange: this.handleMusicLevelChange,
-          handleVibrationChange: this.handleVibrationChange,
-        }}
-      />
+      <RootNavigator/>
     );
   }
 }
 
-//export default RootNavigator;
+export default App;
