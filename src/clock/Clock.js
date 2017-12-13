@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ClockFrame from './ClockFrame';
 import CustomButton from './CustomButton';
-import { StyleSheet, Text, View, Alert, Vibration, Image, FlatList } from 'react-native';
+import { StyleSheet, Text, View, Alert, Image} from 'react-native';
 
 const TIME_MODE = 'T';
 const ALARM_MODE = 'A';
@@ -109,7 +109,6 @@ class Clock extends Component {
   }
 
   ringAlarm(alarm){
-    Vibration.vibrate(2000);
     Alert.alert(
       'Alarm',
       'Your ' + alarm.hours + ':' + alarm.minutes + ' is ringing',
