@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ClockFrame from './ClockFrame';
 import CustomButton from './CustomButton';
-import { StyleSheet, Text, View, Alert, Vibration, Image } from 'react-native';
+import { StyleSheet, Text, View, Alert, Image } from 'react-native';
 
 const TIME_MODE = 'T';
 const ALARM_MODE = 'A';
@@ -110,7 +110,7 @@ class Clock extends Component {
 
   fireAlarm(alarm){
     if(this.props.settings.vibration){
-      Vibration.vibrate(2000);
+      //Call Vibration here
     }
     Alert.alert(
       'Alarm',
